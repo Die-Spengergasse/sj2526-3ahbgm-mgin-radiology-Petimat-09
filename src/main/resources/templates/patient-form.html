@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Neuer Patient</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        input, select { display: block; margin: 8px 0; padding: 6px; width: 300px; }
+    </style>
+</head>
+<body>
+<h1>Neuer Patient</h1>
+<form method="post" th:action="@{/patient/save}" th:object="${patient}">
+
+    <label>Sozialversicherungsnummer:</label>
+    <input type="text" th:field="*{svn}" placeholder="SVN">
+
+    <label>Vorname:</label>
+    <input type="text" th:field="*{firstName}" placeholder="Vorname">
+
+    <label>Nachname:</label>
+    <input type="text" th:field="*{lastName}" placeholder="Nachname">
+
+    <label>Geschlecht:</label>
+    <select th:field="*{gender}">
+        <option value="male">Männlich</option>
+        <option value="female">Weiblich</option>
+    </select>
+
+    <label>Geburtsdatum:</label>
+    <input type="date" th:field="*{birthDate}">
+
+    <br>
+    <button type="submit">Registrieren</button>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservierungsliste</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 100%; }
+        td, th { padding: 8px 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        select { padding: 4px 8px; }
+    </style>
+</head>
+<body>
+
+<h1>Reservierungsliste</h1>
+
+<form method="get" th:action="@{/reservations/list}">
+    <select name="device" onchange="this.form.submit()">
+        <option value="">-- alle Geräte --</option>
+        <option th:each="d : ${devices}"
+                th:value="${d.designation}"
+                th:text="${d.designation} + ' - ' + ${d.type}"
+                th:selected="${d.designation == selectedDevice}">
+        </option>
+    </select>
+</form>
+
+<br>
+
+<table>
+    <tr>
+        <th>Zeit</th>
+        <th>Patient</th>
+        <th>Gerät</th>
+        <th>Körperregion</th>
+        <th>Kommentar</th>
+    </tr>
+    <tr th:each="r : ${reservations}">
+        <td th:text="${r.reservationTime}"></td>
+        <td th:text="${r.patient.firstName} + ' ' + ${r.patient.lastName}"></td>
+        <td th:text="${r.device.designation} + ' (' + ${r.device.type} + ')'"></td>
+        <td th:text="${r.bodyRegion}"></td>
+        <td th:text="${r.comment}"></td>
+    </tr>
+</table>
+
+<br>
+<a href="/reservations/new">Neue Reservierung</a> |
+<a href="/patient">Neuen Patienten registrieren</a>
+
+</body>
+</html>
