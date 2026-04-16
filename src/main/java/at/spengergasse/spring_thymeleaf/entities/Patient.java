@@ -27,7 +27,7 @@ public class Patient {
     public void setLastName(String lastName) { this.lastName = lastName; }
 
     public String getGender() { return gender; }
-    public void setGender(String gender) { this.gender = gender; }
+    public void setGender(String gender) { this.gender = gender; }//modelbinding alle parameter die mit request mitgeschickt werden
 
     public LocalDate getBirthDate() { return birthDate; }
     public void setBirthDate(LocalDate birthDate) { this.birthDate = birthDate; }
