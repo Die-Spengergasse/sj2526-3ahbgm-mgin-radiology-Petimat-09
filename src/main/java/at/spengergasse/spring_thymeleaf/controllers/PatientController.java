@@ -22,7 +22,7 @@ public class PatientController {
         model.addAttribute("patient", new Patient());
         return "patient-form";
     }
-
+    
     @PostMapping("/save")
     public String savePatient(@ModelAttribute Patient patient) {
         patientRepo.save(patient);
