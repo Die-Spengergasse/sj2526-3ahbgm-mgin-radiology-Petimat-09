@@ -14,7 +14,7 @@ public class Reservation {
     @ManyToOne
     @JoinColumn(name = "patient_svn")
     private Patient patient;
-
+ 
     @ManyToOne
     @JoinColumn(name= "device_designation")
     private Device device;
